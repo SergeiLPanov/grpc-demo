@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: user-service/Dockerfile
+    ports:
+      - "50051:50051"
+    networks:
+      - grpc-demo-net
+
+  order-service:
+    build:
+      context: .
+      dockerfile: order-service/Dockerfile
+    depends_on:
+      - user-service
+    environment:
+      - USER_SERVICE_ADDR=user-service:50051
+    networks:
+      - grpc-demo-net
+
+networks:
+  grpc-demo-net:
+    driver: bridge
