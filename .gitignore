@@ -1,10 +1,13 @@
 # macOS
 .DS_Store
+
 # IDE
 .idea/
 .vscode/
+
 # Секреты и окружение
 .env
+
 # Бинарники и результаты тестов
 *.exe
 *.test
